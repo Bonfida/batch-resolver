@@ -16,17 +16,13 @@ const App = () => {
 
   const endpoint = useMemo(() => customRpc || (RPC_URL as string), [customRpc]);
 
-  const isGenGo = endpoint?.includes("genesysgo");
-
   return (
     <ConnectionProvider
       endpoint={endpoint as string}
       config={{
-        fetchMiddleware: isGenGo
-          ? tokenAuthFetchMiddleware({
-              getToken,
-            })
-          : undefined,
+        fetchMiddleware: tokenAuthFetchMiddleware({
+          getToken,
+        }),
       }}
     >
       <div className="bg-neutral">
