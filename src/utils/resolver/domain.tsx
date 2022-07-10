@@ -13,6 +13,7 @@ export const resolveDomain = async (connection: Connection, name: string) => {
       registered: true,
       owner: registry.owner,
       pubkey,
+      content: registry.data?.toString(),
     };
   } catch {
     return { registered: false, pubkey };

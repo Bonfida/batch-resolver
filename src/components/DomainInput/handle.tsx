@@ -11,7 +11,7 @@ export const resolve = async (connection: Connection, name: Result) => {
   let fixedPrice = false;
   let auction = false;
 
-  const { registered, owner, pubkey } = await resolveDomain(
+  const { registered, owner, pubkey, content } = await resolveDomain(
     connection,
     name.name
   );
@@ -37,6 +37,7 @@ export const resolve = async (connection: Connection, name: Result) => {
   name.fixedPrice = fixedPrice;
   name.registered = registered;
   name.owner = owner?.toBase58();
+  name.content = content;
 
   return name;
 };

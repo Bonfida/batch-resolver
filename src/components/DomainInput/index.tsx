@@ -33,8 +33,8 @@ const DomainInput = () => {
         });
       names = _.uniqWith(names, _.isEqual);
 
-      if (names.length > 50) {
-        toastId.current = toast("Cannot resolve more than 50 domains", {
+      if (names.length > 100) {
+        toastId.current = toast("Cannot resolve more than 100 domains", {
           type: toast.TYPE.INFO,
         });
         return;
@@ -54,9 +54,9 @@ const DomainInput = () => {
 
   return (
     <div className="w-[90%] lg:w-1/2 h-[90%] flex flex-col justify-center items-center">
-      <h2 className="text-5xl font-bold m-1">Bulk search</h2>
-      <span className="mb-3 font-bold opacity-50 text-center">
-        Separators: commas, spaces, new lines - Max 50 domains per requests
+      <h2 className="m-1 text-5xl font-bold">Bulk search</h2>
+      <span className="mb-3 font-bold text-center opacity-50">
+        Separators: commas, spaces, new lines - Max 100 domains per requests
       </span>
       <textarea
         value={domains}
@@ -64,7 +64,7 @@ const DomainInput = () => {
         className="textarea textarea-info w-full h-[40vh] text-white font-bold text-xl"
         placeholder="Enter domains"
       />
-      <div className="flex flex-col lg:flex-row w-full justify-around">
+      <div className="flex flex-col justify-around w-full lg:flex-row">
         <ButtonBorderGradient
           disabled={!domains}
           onClick={handleResolve}
@@ -87,7 +87,7 @@ const DomainInput = () => {
       </div>
       {result && (
         <>
-          <h2 className="text-5xl font-bold m-3 my-5">Search results</h2>
+          <h2 className="m-3 my-5 text-5xl font-bold">Search results</h2>
           <ResultTable data={result} />
         </>
       )}

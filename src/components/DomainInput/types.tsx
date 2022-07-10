@@ -5,4 +5,5 @@ export interface Result {
   fixedPrice: boolean;
   tokenized: boolean;
   auction: boolean;
+  content?: string;
 }
